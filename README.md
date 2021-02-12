@@ -1,24 +1,5 @@
 # dyson_sphere
 
-## Project setup
-```
-npm install
-```
+戴森球合成树形图
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Lints and fixes files
-```
-npm run lint
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
+可以 [点击这里预览](https://yoko008.github.io/).
