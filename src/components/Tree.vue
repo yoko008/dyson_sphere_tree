@@ -13,7 +13,8 @@
             <!--<span v-if="tree.info[dangqian].duoyu!=undefined">{{tree.info[dangqian].duoyu[0].wupin}}*{{tree.info[dangqian].duoyu[0].shuliang}}</span>-->
         </div>
         <div>
-
+            <el-tag  type="success" size="mini">{{tree.info[dangqian].leixing}}
+            </el-tag>
         </div>
         <!--<div v-if="tree.info.length>1">
             <span v-for="(item,index) in tree.info" :key="index">
