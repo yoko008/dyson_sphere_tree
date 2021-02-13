@@ -12,11 +12,16 @@
             <!--</el-badge>-->
             <!--<span v-if="tree.info[dangqian].duoyu!=undefined">{{tree.info[dangqian].duoyu[0].wupin}}*{{tree.info[dangqian].duoyu[0].shuliang}}</span>-->
         </div>
-        <div v-if="tree.info.length>1">
+        <!--<div v-if="tree.info.length>1">
             <span v-for="(item,index) in tree.info" :key="index">
                 <el-link type="primary" v-if="dangqian!=index" @click="qiehuanhechengfangshi(item,index)">{{item.zhushi}}</el-link>
                 <el-link disabled v-else>{{item.zhushi}}</el-link>
             </span>
+        </div>-->
+        <div v-if="tree.info.length>1">
+            <el-link type="primary" @click="qiehuanhechengfangshi(-1)"><i class="el-icon-caret-left"></i></el-link>
+            <el-link>{{tree.info[dangqian].zhushi}}</el-link>
+            <el-link type="primary" @click="qiehuanhechengfangshi(1)"><i class="el-icon-caret-right"></i></el-link>
         </div>
         <div v-if="tree.info[dangqian].yuanliao.length>1">丨</div>
         <div class="yuanliao">
@@ -58,8 +63,15 @@
         mounted: function () {
         },
         methods: {
-            qiehuanhechengfangshi: function (item, index) {
-                this.dangqian = index
+            qiehuanhechengfangshi: function (index) {
+                let currentIndex = this.dangqian + index
+                if (currentIndex < 0) {
+                    this.dangqian = this.tree.info.length - 1
+                } else if (currentIndex >= this.tree.info.length) {
+                    this.dangqian = 0
+                } else {
+                    this.dangqian = currentIndex
+                }
             }
         }
     }

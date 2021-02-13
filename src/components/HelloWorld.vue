@@ -7,7 +7,7 @@
                 </div>
             </div>
         </div>
-        <div>
+        <div style="width: auto;">
             <Tree :tree="tree" :shuliang="1" :zongshuliang="1" :dangqian="dangqian"/>
         </div>
     </div>
@@ -373,7 +373,7 @@
                     leixing: leixing.jinglianshebei,
                     caiji: false,
                     shoucuo: false,
-                    duoyu: [{wupin: qing, shuliang: 0.5}],
+                    duoyu: [{wupin: "氢", shuliang: 0.5}],
                     zhushi: "高效"
                 }]
             }
