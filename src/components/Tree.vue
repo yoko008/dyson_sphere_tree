@@ -2,9 +2,9 @@
     <div>
         <div>
             <!--<el-badge :value="1" class="item" type="primary">-->
-            <el-tag v-if="tree.info[dangqian].caiji==true" type="danger" size="mini">{{tree.name}}
-                <!--*{{shuliang}}({{zongshuliang}})--></el-tag>
-            <el-tag v-else size="mini">{{tree.name}}<!--*{{shuliang}}({{zongshuliang}})--></el-tag>
+            <el-tag v-if="tree.info[dangqian].caiji==true" type="danger" size="mini">{{tree.name}}*{{zongshuliang}}
+            </el-tag>
+            <el-tag v-else size="mini">{{tree.name}}*{{zongshuliang}}</el-tag>
             <el-tag v-if="tree.info[dangqian].duoyu!=undefined" type="info" size="mini"><span
                     v-for="item in tree.info[dangqian].duoyu"
                     :key="item.wupin">{{item.wupin}}</span>
