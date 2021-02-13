@@ -7,7 +7,7 @@
                 </div>
             </div>
         </div>
-        <div style="width: auto;">
+        <div style="display:inline-block;*display:inline;*zoom:1;">
             <Tree :tree="tree" :shuliang="1" :zongshuliang="1" :dangqian="dangqian"/>
         </div>
     </div>
