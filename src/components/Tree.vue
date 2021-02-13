@@ -18,9 +18,9 @@
                 <el-link disabled v-else>{{item.zhushi}}</el-link>
             </span>
         </div>-->
-        <div v-if="tree.info.length>1">
+        <div v-if="tree.info.length>1" style="white-space: nowrap;">
             <el-link type="primary" @click="qiehuanhechengfangshi(-1)"><i class="el-icon-caret-left"></i></el-link>
-            <el-link>{{tree.info[dangqian].zhushi}}</el-link>
+            <span style="font-size: 10px;color: #82848a;">{{tree.info[dangqian].zhushi}}</span>
             <el-link type="primary" @click="qiehuanhechengfangshi(1)"><i class="el-icon-caret-right"></i></el-link>
         </div>
         <div v-if="tree.info[dangqian].yuanliao.length>1">丨</div>
