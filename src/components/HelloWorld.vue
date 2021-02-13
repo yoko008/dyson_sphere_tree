@@ -44,8 +44,9 @@
                 yelianshebei: "冶炼设备",
                 zhizaotai: "制造台",
                 keyanshebei: "科研设备",
-                caijiqi: "采集器",
-                choushuizhan: "抽水站",
+                caijiqi: "采矿机",
+                choushuizhan: "抽水设备",
+                chouyouzhan: "抽油设备",
                 jinglianshebei: "精炼设备",
                 huagongshebei: "化工设备",
                 fenliushebei: "分馏设备",
@@ -223,7 +224,7 @@
                 info: [{
                     yuanliao: [],
                     shijian: 0,
-                    leixing: leixing.caijiqi,
+                    leixing: leixing.chouyouzhan,
                     caiji: true,
                     shoucuo: false,
                 }]
