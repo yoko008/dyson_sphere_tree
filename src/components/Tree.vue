@@ -7,10 +7,13 @@
             <el-tag v-else size="mini">{{tree.name}}*{{zongshuliang}}</el-tag>
             <el-tag v-if="tree.info[dangqian].duoyu!=undefined" type="info" size="mini"><span
                     v-for="item in tree.info[dangqian].duoyu"
-                    :key="item.wupin">{{item.wupin}}</span>
+                    :key="item.wupin">{{item.wupin}}*{{item.shuliang*zongshuliang}}</span>
             </el-tag>
             <!--</el-badge>-->
             <!--<span v-if="tree.info[dangqian].duoyu!=undefined">{{tree.info[dangqian].duoyu[0].wupin}}*{{tree.info[dangqian].duoyu[0].shuliang}}</span>-->
+        </div>
+        <div>
+
         </div>
         <!--<div v-if="tree.info.length>1">
             <span v-for="(item,index) in tree.info" :key="index">
@@ -41,7 +44,7 @@
                     <div style="border-top:1px black solid;width: 100%;"></div>
                 </div>
                 <div>丨</div>
-                <Tree :tree="item.wupin" :shuliang="item.shuliang" :zongshuliang="item.shuliang * shuliang"
+                <Tree :tree="item.wupin" :shuliang="item.shuliang" :zongshuliang="item.shuliang * zongshuliang"
                       :dangqian="0"/>
             </div>
         </div>
