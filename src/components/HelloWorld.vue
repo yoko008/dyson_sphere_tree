@@ -1,5 +1,10 @@
 <template>
     <div class="hello">
+        <div class="row" style="text-align: left;">
+            <el-link href="https://github.com/yoko008/dyson_sphere_tree" target="_blank">源码地址</el-link>
+            <el-link disabled target="_blank">丨</el-link>
+            <el-link href="https://github.com/yoko008/dyson_sphere_tree/issues/new" target="_blank">数据报错/建议</el-link>
+        </div>
         <div class="row">
             <div class="lie" v-for="(item,index) in list" :key="index">
                 <div class="hang" v-for="(item2,index2) in item" :key="index2">
@@ -26,10 +31,12 @@
                     inactive-color="#82848a">
             </el-switch>
             显示多余产物丨
-            产物数量：<el-input-number size="mini" v-model="zongshuliang"  :min="1" :max="10000" label="产物数量"></el-input-number>
+            产物数量：
+            <el-input-number size="mini" v-model="zongshuliang" :min="1" :max="10000" label="产物数量"></el-input-number>
         </div>
         <div style="display:inline-block;*display:inline;*zoom:1;" class="row">
-            <Tree :tree="tree" :shuliang="1" :zongshuliang="zongshuliang" :dangqian="dangqian" :switchvalue="switchvalue"/>
+            <Tree :tree="tree" :shuliang="1" :zongshuliang="zongshuliang" :dangqian="dangqian"
+                  :switchvalue="switchvalue"/>
         </div>
     </div>
 </template>
@@ -63,7 +70,7 @@
                     shebei: true,
                     duoyu: true
                 },
-                zongshuliang:1
+                zongshuliang: 1
             }
         },
         mounted: function () {
@@ -78,7 +85,7 @@
                 huagongshebei: "化工设备",
                 fenliushebei: "分馏设备",
                 liziduizhuangji: "粒子对撞机",
-                shexiankjieshouzhan: "射线接收站",
+                shexianjieshouzhan: "射线接收站",
                 weiding: "未定"
             }
 
