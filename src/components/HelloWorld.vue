@@ -30,9 +30,25 @@
                     active-color="#13ce66"
                     inactive-color="#82848a">
             </el-switch>
-            显示多余产物丨
+            显示额外产物丨
             产物数量：
             <el-input-number size="mini" v-model="zongshuliang" :min="1" :max="10000" label="产物数量"></el-input-number>
+        </div>
+        <div class="row" style="text-align: left;">
+            图例：
+            <el-tag size="mini">合成产物<span v-if="switchvalue.shuliang">*数量</span></el-tag>丨
+            <el-tag type="danger" size="mini">采集物品<span
+                    v-if="switchvalue.shuliang">*数量</span>
+            </el-tag><span>丨</span>
+            <el-tag v-if="switchvalue.duoyu" type="info" size="mini"><span>
+                    额外产物<span
+                    v-if="switchvalue.shuliang">*数量</span></span>
+            </el-tag><span v-if="switchvalue.duoyu">丨</span>
+            <el-tag  v-if="switchvalue.shebei" type="success" size="mini">合成设备
+            </el-tag><span v-if="switchvalue.shebei">丨</span>
+            <el-link type="primary"><i class="el-icon-caret-left"></i></el-link>
+            <span style="font-size: 10px;color: #82848a;">当前合成方式</span>
+            <el-link type="primary"><i class="el-icon-caret-right"></i></el-link>
         </div>
         <div style="display:inline-block;*display:inline;*zoom:1;" class="row">
             <Tree :tree="tree" :shuliang="1" :zongshuliang="zongshuliang" :dangqian="dangqian"
@@ -54,7 +70,7 @@
                     ["钢材", "电动机", "钛化玻璃", "棱镜", "钛晶石", "推进器", "加力推进器", "奇异物质"],
                     ["齿轮", "电磁涡轮", "硅石", "电路板", "引力透镜", "硫酸", "重氢", "位面过滤器", "碳纳米管", "物流运输机", "星际物流运输船", "小型运载火箭"],
                     ["电浆激发器", "超级磁场环", "粒子宽带", "处理器", "卡西米尔晶体", "粒子容器", "空间翘曲器", "湮灭约束球", "太阳帆", "框架材料", "戴森球组件"],
-                    ["光子合并器", "微晶原件", "量子芯片", "反物质", "临界光子"],
+                    ["光子合并器", "微晶原件", "量子芯片", "反物质"],
                     ["电磁矩阵", "能量矩阵", "结构矩阵", "信息矩阵", "引力矩阵", "宇宙矩阵", "地基"]],
                 listDetail: [],
                 tree: {
