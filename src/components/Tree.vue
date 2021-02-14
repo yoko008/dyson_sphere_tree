@@ -2,18 +2,20 @@
     <div>
         <div>
             <!--<el-badge :value="1" class="item" type="primary">-->
-            <el-tag v-if="tree.info[dangqian].caiji==true" type="danger" size="mini">{{tree.name}}*{{zongshuliang}}
+            <el-tag v-if="tree.info[dangqian].caiji==true" type="danger" size="mini">{{tree.name}}<span
+                    v-if="switchvalue.shuliang">*{{zongshuliang}}</span>
             </el-tag>
-            <el-tag v-else size="mini">{{tree.name}}*{{zongshuliang}}</el-tag>
-            <el-tag v-if="tree.info[dangqian].duoyu!=undefined" type="info" size="mini"><span
+            <el-tag v-else size="mini">{{tree.name}}<span v-if="switchvalue.shuliang">*{{zongshuliang}}</span></el-tag>
+            <el-tag v-if="switchvalue.duoyu && tree.info[dangqian].duoyu!=undefined " type="info" size="mini"><span
                     v-for="item in tree.info[dangqian].duoyu"
-                    :key="item.wupin">{{item.wupin}}*{{item.shuliang*zongshuliang}}</span>
+                    :key="item.wupin">{{item.wupin}}<span
+                    v-if="switchvalue.shuliang">*{{item.shuliang*zongshuliang}}</span></span>
             </el-tag>
             <!--</el-badge>-->
             <!--<span v-if="tree.info[dangqian].duoyu!=undefined">{{tree.info[dangqian].duoyu[0].wupin}}*{{tree.info[dangqian].duoyu[0].shuliang}}</span>-->
         </div>
-        <div>
-            <el-tag  type="success" size="mini">{{tree.info[dangqian].leixing}}
+        <div v-if="switchvalue.shebei">
+            <el-tag type="success" size="mini">{{tree.info[dangqian].leixing}}
             </el-tag>
         </div>
         <!--<div v-if="tree.info.length>1">
@@ -46,7 +48,7 @@
                 </div>
                 <div>丨</div>
                 <Tree :tree="item.wupin" :shuliang="item.shuliang" :zongshuliang="item.shuliang * zongshuliang"
-                      :dangqian="0"/>
+                      :dangqian="0" :switchvalue="switchvalue"/>
             </div>
         </div>
     </div>
@@ -60,6 +62,7 @@
             shuliang: Number,
             zongshuliang: Number,
             dangqian: Number,
+            switchvalue: Object
         },
         data: function () {
             return {}

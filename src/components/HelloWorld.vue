@@ -1,14 +1,34 @@
 <template>
     <div class="hello">
-        <div>
+        <div class="row">
             <div class="lie" v-for="(item,index) in list" :key="index">
                 <div class="hang" v-for="(item2,index2) in item" :key="index2">
                     <el-button size="mini" @click="getData(index,index2)">{{item2}}</el-button>
                 </div>
             </div>
         </div>
-        <div style="display:inline-block;*display:inline;*zoom:1;">
-            <Tree :tree="tree" :shuliang="1" :zongshuliang="1" :dangqian="dangqian"/>
+        <div class="row">
+            <el-switch
+                    v-model="switchvalue.shuliang"
+                    active-color="#13ce66"
+                    inactive-color="#82848a">
+            </el-switch>
+            显示数量
+            <el-switch
+                    v-model="switchvalue.shebei"
+                    active-color="#13ce66"
+                    inactive-color="#82848a">
+            </el-switch>
+            显示设备
+            <el-switch
+                    v-model="switchvalue.duoyu"
+                    active-color="#13ce66"
+                    inactive-color="#82848a">
+            </el-switch>
+            显示多余产物
+        </div>
+        <div style="display:inline-block;*display:inline;*zoom:1;" class="row">
+            <Tree :tree="tree" :shuliang="1" :zongshuliang="1" :dangqian="dangqian" :switchvalue="switchvalue"/>
         </div>
     </div>
 </template>
@@ -36,7 +56,12 @@
                         }
                     ]
                 },
-                dangqian: 0
+                dangqian: 0,
+                switchvalue: {
+                    shuliang: true,
+                    shebei: true,
+                    duoyu: true
+                }
             }
         },
         mounted: function () {
@@ -1045,5 +1070,9 @@
 
     .hang {
 
+    }
+
+    .row{
+        margin: 10px 0px;
     }
 </style>
