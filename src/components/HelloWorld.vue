@@ -7,28 +7,29 @@
                 </div>
             </div>
         </div>
-        <div class="row">
+        <div class="row" style="text-align: left;">
             <el-switch
                     v-model="switchvalue.shuliang"
                     active-color="#13ce66"
                     inactive-color="#82848a">
             </el-switch>
-            显示数量
+            显示数量丨
             <el-switch
                     v-model="switchvalue.shebei"
                     active-color="#13ce66"
                     inactive-color="#82848a">
             </el-switch>
-            显示设备
+            显示设备丨
             <el-switch
                     v-model="switchvalue.duoyu"
                     active-color="#13ce66"
                     inactive-color="#82848a">
             </el-switch>
-            显示多余产物
+            显示多余产物丨
+            产物数量：<el-input-number size="mini" v-model="zongshuliang"  :min="1" :max="10000" label="产物数量"></el-input-number>
         </div>
         <div style="display:inline-block;*display:inline;*zoom:1;" class="row">
-            <Tree :tree="tree" :shuliang="1" :zongshuliang="1" :dangqian="dangqian" :switchvalue="switchvalue"/>
+            <Tree :tree="tree" :shuliang="1" :zongshuliang="zongshuliang" :dangqian="dangqian" :switchvalue="switchvalue"/>
         </div>
     </div>
 </template>
@@ -61,7 +62,8 @@
                     shuliang: true,
                     shebei: true,
                     duoyu: true
-                }
+                },
+                zongshuliang:1
             }
         },
         mounted: function () {
@@ -1072,7 +1074,7 @@
 
     }
 
-    .row{
+    .row {
         margin: 10px 0px;
     }
 </style>
