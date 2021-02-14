@@ -30,22 +30,26 @@
                     active-color="#13ce66"
                     inactive-color="#82848a">
             </el-switch>
-            显示额外产物丨
-            产物数量：
-            <el-input-number size="mini" v-model="zongshuliang" :min="1" :max="10000" label="产物数量"></el-input-number>
+            显示额外产物<span v-if="switchvalue.shuliang">丨
+            产物数量：</span>
+            <el-input-number v-if="switchvalue.shuliang" size="mini" v-model="zongshuliang" :min="1" :max="10000" label="产物数量"></el-input-number>
         </div>
         <div class="row" style="text-align: left;">
             图例：
-            <el-tag size="mini">合成产物<span v-if="switchvalue.shuliang">*数量</span></el-tag>丨
+            <el-tag size="mini">合成产物<span v-if="switchvalue.shuliang">*数量</span></el-tag>
+            丨
             <el-tag type="danger" size="mini">采集物品<span
                     v-if="switchvalue.shuliang">*数量</span>
-            </el-tag><span>丨</span>
+            </el-tag>
+            <span>丨</span>
             <el-tag v-if="switchvalue.duoyu" type="info" size="mini"><span>
                     额外产物<span
                     v-if="switchvalue.shuliang">*数量</span></span>
-            </el-tag><span v-if="switchvalue.duoyu">丨</span>
-            <el-tag  v-if="switchvalue.shebei" type="success" size="mini">合成设备
-            </el-tag><span v-if="switchvalue.shebei">丨</span>
+            </el-tag>
+            <span v-if="switchvalue.duoyu">丨</span>
+            <el-tag v-if="switchvalue.shebei" type="success" size="mini">合成设备
+            </el-tag>
+            <span v-if="switchvalue.shebei">丨</span>
             <el-link type="primary"><i class="el-icon-caret-left"></i></el-link>
             <span style="font-size: 10px;color: #82848a;">当前合成方式</span>
             <el-link type="primary"><i class="el-icon-caret-right"></i></el-link>
