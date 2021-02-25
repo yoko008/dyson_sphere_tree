@@ -247,7 +247,7 @@ const qing = {
         duoyu: [{wupin: "石墨烯", shuliang: 2}],
         zhushi: "分解可燃冰"
     }, {
-        yuanliao: [{wupin: jinglianyou, shuliang: 0.33}, {
+        yuanliao: [{wupin: jinglianyou, shuliang: 1/3}, {
             wupin: {
                 name: "氢",
                 info: [{
@@ -257,21 +257,21 @@ const qing = {
                     caiji: false,
                     shoucuo: false
                 }]
-            }, shuliang: 0.66
+            }, shuliang: 2/3
         }],
         shijian: 4,
         leixing: leixing.jinglianshebei,
         caiji: false,
         shoucuo: false,
-        duoyu: [{wupin: "高能石墨", shuliang: 0.33}],
+        duoyu: [{wupin: "高能石墨", shuliang: 1/3}],
         zhushi: "X射线裂解"
     }, {
-        yuanliao: [{wupin: linjieguangzi, shuliang: 2 / 2}],
+        yuanliao: [{wupin: linjieguangzi, shuliang: 1}],
         shijian: 2,
         leixing: leixing.liziduizhuangji,
         caiji: false,
         shoucuo: false,
-        duoyu: [{wupin: "反物质", shuliang: 2 / 2}],
+        duoyu: [{wupin: "反物质", shuliang: 1}],
         zhushi: "质能储存"
     }]
 }
@@ -602,7 +602,7 @@ const zhongqing = {
     }]
 }
 const dianjiangfasheqi = {
-    name: "电浆发射器",
+    name: "电浆激发器",
     info: [{
         yuanliao: [{wupin: cixianquan, shuliang: 4}, {wupin: lengjing, shuliang: 2}],
         shijian: 2,

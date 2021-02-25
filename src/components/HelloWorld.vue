@@ -5,15 +5,35 @@
             <el-link disabled target="_blank">丨</el-link>
             <el-link href="https://github.com/yoko008/dyson_sphere_tree/issues/new" target="_blank">数据报错/建议</el-link>
         </div>
-        <div class="row">
-            <template v-for="(item,index) in list">
-                <el-button style="margin-left: 1px;" size="mini" type="info" :key="index" plain>{{item.shouzimu}}
-                </el-button>
-                <el-button style="margin-left: 1px;" v-for="(item2,index2) in item.wupin" :key="index2" size="mini"
-                           @click="getData(index,index2)">{{item2}}
-                </el-button>
-            </template>
-        </div>
+        <el-tabs tab-position="right" style="height: 200px;">
+            <el-tab-pane label="组件">
+                <div class="row">
+                    <template v-for="(item,index) in list">
+                        <el-button style="margin-left: 1px;" size="mini" type="info" :key="index" plain>
+                            {{item.shouzimu}}
+                        </el-button>
+                        <el-button style="margin-left: 1px;" v-for="(item2,index2) in item.wupin" :key="index2"
+                                   size="mini"
+                                   @click="getData(index,index2)">{{item2}}
+                        </el-button>
+                    </template>
+                </div>
+            </el-tab-pane>
+            <el-tab-pane label="建筑">
+                <div class="row">
+                    <template v-for="(item,index) in jianzhu_list">
+                        <el-button style="margin-left: 1px;" size="mini" type="info" :key="index" plain>
+                            {{item.shouzimu}}
+                        </el-button>
+                        <el-button style="margin-left: 1px;" v-for="(item2,index2) in item.wupin" :key="index2"
+                                   size="mini"
+                                   @click="getjianzhuData(index,index2)">{{item2}}
+                        </el-button>
+                    </template>
+                </div>
+            </el-tab-pane>
+        </el-tabs>
+
         <div class="row" style="text-align: left;">
             <el-switch
                     v-model="switchvalue.shuliang"
@@ -67,6 +87,7 @@
 <script>
     import Tree from "@/components/Tree";
     import zujian from "@/assets/js/zujian";
+    import jianzhu from "@/assets/js/jianzhu";
 
     export default {
         name: 'HelloWorld',
@@ -101,7 +122,88 @@
                     {"shouzimu": "Z", wupin: ["重氢"]},
                     {"shouzimu": "矩阵", wupin: ["电磁矩阵", "能量矩阵", "结构矩阵", "信息矩阵", "引力矩阵", "宇宙矩阵"]}
                 ],
-                listDetail: [],
+                listDetail: [[],
+                    [zujian.boli],
+                    [zujian.citie, zujian.cixianquan, zujian.chilun, zujian.chaojicichanghuan, zujian.chuliqi],
+                    [zujian.dianluban, zujian.daoheranliaobang, zujian.diandongji, zujian.dianciwolun, zujian.dianjiangfasheqi, zujian.daisenqiuzujian, zujian.diji, zujian.diancijuzhen],
+                    [],
+                    [zujian.fanwuzhi, zujian.fanwuzhiranliaobang],
+                    [zujian.guishi, zujian.gaochunguikuai, zujian.gaonengshimo, zujian.gangcai, zujian.guangzihebingqi],
+                    [],
+                    [],
+                    [zujian.jinglianyou, zujian.jinggegui, zujian.jingangshi, zujian.jialituijinqi, zujian.jiegoujuzhen],
+                    [zujian.kaximierjingti, zujian.kuangjiacailiao, zujian.kongjianqiaoquqi],
+                    [zujian.lengjing, zujian.liusuan, zujian.lizikuandai, zujian.lizirongqi, zujian.liangzixinpian],
+                    [],
+                    [zujian.nengliangjuzhen],
+                    [],
+                    [],
+                    [zujian.qing, zujian.qiyiwuzhi],
+                    [],
+                    [zujian.shicai, zujian.suliao, zujian.shimoxi],
+                    [zujian.tiekuai, zujian.tongkuai, zujian.taikuai, zujian.taihejin, zujian.taihuaboli, zujian.taijingshi, zujian.tuijinqi, zujian.tannamiguan, zujian.taiyangfan],
+                    [],
+                    [],
+                    [zujian.weimianguolvqi, zujian.wuliuyunshuji, zujian.weijingyuanjian],
+                    [zujian.xingjiwuliuyunshuchuan, zujian.xiaoxingyunzaihuojian, zujian.xinxijuzhen],
+                    [zujian.youjijingti, zujian.yeqingranliaobang, zujian.yinlitoujing, zujian.yanmieyueshuqiu, zujian.yinlijuzhen, zujian.yuzhoujuzhen],
+                    [zujian.zhongqing],
+                    [zujian.diancijuzhen, zujian.nengliangjuzhen, zujian.jiegoujuzhen, zujian.xinxijuzhen, zujian.yinlijuzhen, zujian.yuzhoujuzhen]
+                ],
+                jianzhu_list: [{"shouzimu": "A", wupin: []},
+                    {"shouzimu": "B", wupin: []},
+                    {"shouzimu": "C", wupin: ["传送带", "传送带（高速）", "传送带（极速）", "储液罐", "采矿机", "抽水站", "垂直发射井"]},
+                    {"shouzimu": "D", wupin: ["电力感应塔", "大型储物仓", "电磁轨道弹射器", "电弧熔炉"]},
+                    {"shouzimu": "E", wupin: []},
+                    {"shouzimu": "F", wupin: ["风力涡轮机", "分拣器", "分拣器（高速）", "分拣器（极速）", "分馏塔"]},
+                    {"shouzimu": "G", wupin: ["轨道采集器"]},
+                    {"shouzimu": "H", wupin: ["火力发电厂", "化工厂"]},
+                    {"shouzimu": "I", wupin: []},
+                    {"shouzimu": "J", wupin: ["矩阵研究站"]},
+                    {"shouzimu": "K", wupin: []},
+                    {"shouzimu": "L", wupin: []},
+                    {"shouzimu": "M", wupin: []},
+                    {"shouzimu": "N", wupin: ["能量枢纽"]},
+                    {"shouzimu": "O", wupin: []},
+                    {"shouzimu": "P", wupin: []},
+                    {"shouzimu": "Q", wupin: []},
+                    {"shouzimu": "R", wupin: ["人造恒星"]},
+                    {"shouzimu": "S", wupin: ["射线接收站", "四向分流器"]},
+                    {"shouzimu": "T", wupin: ["太阳能板"]},
+                    {"shouzimu": "U", wupin: []},
+                    {"shouzimu": "V", wupin: []},
+                    {"shouzimu": "W", wupin: ["无线输电塔", "微型配电站", "微型聚变发电站", "微型粒子对撞机"]},
+                    {"shouzimu": "X", wupin: ["蓄电器", "小型储物仓", "行星内物流运输站", "星际物流运输站"]},
+                    {"shouzimu": "Y", wupin: ["原油萃取站", "原油精炼厂"]},
+                    {"shouzimu": "Z", wupin: ["制造台Mk.I", "制造台Mk.II", "制造台Mk.III"]},
+                ],
+                jianzhu_listDetail: [[],
+                    [],
+                    [jianzhu.chuansongdai, jianzhu.gaosuchuansongdai, jianzhu.jisuchuansongdai, jianzhu.chuyeguan, jianzhu.caikuangji, jianzhu.choushuizhan, jianzhu.chuizhifashejing],
+                    [jianzhu.dianliganyingta, jianzhu.daxingchuwucang, jianzhu.dianciguidaotansheqi, jianzhu.dianhuronglu],
+                    [],
+                    [jianzhu.fengliwolunji, jianzhu.fenjianqi, jianzhu.gaosufenjianqi, jianzhu.jisufenjianqi, jianzhu.fenliuta],
+                    [jianzhu.guidaocaijiqi],
+                    [jianzhu.huolifadianchang, jianzhu.huagongchang],
+                    [],
+                    [jianzhu.juzhenyanjiuzhan],
+                    [],
+                    [],
+                    [],
+                    [jianzhu.nengliangshuniu],
+                    [],
+                    [],
+                    [],
+                    [jianzhu.renzaohengxing],
+                    [jianzhu.shexianjieshouzhan, jianzhu.sixiangfenliuqi],
+                    [jianzhu.taiyangnengban],
+                    [],
+                    [],
+                    [jianzhu.wuxianshudianta, jianzhu.weixingpeidianzhan, jianzhu.weixingjubianfadianzhan, jianzhu.weixingliziduizhuangji],
+                    [jianzhu.xudianqi, jianzhu.xiaoxingchuwucang, jianzhu.xingxingneiwuliuyunshuzhan, jianzhu.xingjiwuliuyunshuzhan],
+                    [jianzhu.yuanyoucuiquzhan, jianzhu.yuanyoujinglianchang],
+                    [jianzhu.zhizaotaimk1, jianzhu.zhizaotaimk2, jianzhu.zhizaotaimk3]
+                ],
                 tree: {
                     info: [
                         {
@@ -119,40 +221,16 @@
             }
         },
         mounted: function () {
-            this.listDetail = [[],
-                [zujian.boli],
-                [zujian.citie, zujian.cixianquan, zujian.chilun, zujian.chaojicichanghuan, zujian.chuliqi],
-                [zujian.dianluban, zujian.daoheranliaobang, zujian.diandongji, zujian.dianciwolun, zujian.dianjiangfasheqi, zujian.daisenqiuzujian, zujian.diji, zujian.diancijuzhen],
-                [],
-                [zujian.fanwuzhi, zujian.fanwuzhiranliaobang],
-                [zujian.guishi, zujian.gaochunguikuai, zujian.gaonengshimo, zujian.gangcai, zujian.guangzihebingqi],
-                [],
-                [],
-                [zujian.jinglianyou, zujian.jinggegui, zujian.jingangshi, zujian.jialituijinqi, zujian.jiegoujuzhen],
-                [zujian.kaximierjingti, zujian.kuangjiacailiao, zujian.kongjianqiaoquqi],
-                [zujian.lengjing, zujian.liusuan, zujian.lizikuandai, zujian.lizirongqi, zujian.liangzixinpian],
-                [],
-                [zujian.nengliangjuzhen],
-                [],
-                [],
-                [zujian.qing, zujian.qiyiwuzhi],
-                [],
-                [zujian.shicai, zujian.suliao, zujian.shimoxi],
-                [zujian.tiekuai, zujian.tongkuai, zujian.taikuai, zujian.taihejin, zujian.taihuaboli, zujian.taijingshi, zujian.tuijinqi, zujian.tannamiguan, zujian.taiyangfan],
-                [],
-                [],
-                [zujian.weimianguolvqi, zujian.wuliuyunshuji, zujian.weijingyuanjian],
-                [zujian.xingjiwuliuyunshuchuan, zujian.xiaoxingyunzaihuojian, zujian.xinxijuzhen],
-                [zujian.youjijingti, zujian.yeqingranliaobang, zujian.yinlitoujing, zujian.yanmieyueshuqiu, zujian.yinlijuzhen, zujian.yuzhoujuzhen],
-                [zujian.zhongqing],
-                [zujian.diancijuzhen, zujian.nengliangjuzhen, zujian.jiegoujuzhen, zujian.xinxijuzhen, zujian.yinlijuzhen, zujian.yuzhoujuzhen]
-            ]
             this.tree = this.listDetail[1][0]
         }
         ,
         methods: {
             getData: function (index, index2) {
                 this.tree = this.listDetail[index][index2]
+                this.dangqian = 0
+            },
+            getjianzhuData: function (index, index2) {
+                this.tree = this.jianzhu_listDetail[index][index2]
                 this.dangqian = 0
             }
         }
