@@ -61,6 +61,16 @@ const guishi = {
         zhushi: "冶炼"
     }]
 }
+const guangshanshi = {
+    name: "光栅石",
+    info: [{
+        yuanliao: [],
+        shijian: 0,
+        leixing: leixing.caijiqi,
+        caiji: true,
+        shoucuo: false,
+    }]
+}
 const gaochunguikuai = {
     name: "高纯硅块",
     info: [{
@@ -203,7 +213,7 @@ const keranbing = {
     info: [{
         yuanliao: [],
         shijian: 0,
-        leixing: leixing.choushuizhan,
+        leixing: leixing.caijiqi,
         caiji: true,
         shoucuo: false
     }]
@@ -448,6 +458,13 @@ const zhiwuranliao = {
 const youjijingti = {
     name: "有机晶体",
     info: [{
+        yuanliao: [],
+        shijian: 0,
+        leixing: leixing.caijiqi,
+        caiji: true,
+        shoucuo: false,
+        zhushi: "采集"
+    },{
         yuanliao: [{wupin: suliao, shuliang: 2}, {wupin: jinglianyou, shuliang: 1}, {
             wupin: shui,
             shuliang: 1
@@ -492,7 +509,7 @@ const chilun = {
 const diandongji = {
     name: "电动机",
     info: [{
-        yuanliao: [{wupin: tiekuai, shuliang: 0.5}, {wupin: chilun, shuliang: 1}, {
+        yuanliao: [{wupin: tiekuai, shuliang: 2}, {wupin: chilun, shuliang: 1}, {
             wupin: cixianquan,
             shuliang: 1
         }],
@@ -659,6 +676,27 @@ const kaximierjingti = {
         leixing: leixing.zhizaotai,
         caiji: false,
         shoucuo: true,
+        zhushi: "普通"
+    }, {
+        yuanliao: [{wupin: guangshanshi, shuliang: 6}, {wupin: shimoxi, shuliang: 2}, {
+            wupin: qing,
+            shuliang: 12
+        }],
+        shijian: 4,
+        leixing: leixing.zhizaotai,
+        caiji: false,
+        shoucuo: false,
+        zhushi: "高效"
+    }]
+}
+const danjicishi = {
+    name: "单极磁石",
+    info: [{
+        yuanliao: [],
+        shijian: 0,
+        leixing: leixing.caijiqi,
+        caiji: true,
+        shoucuo: false
     }]
 }
 const lizirongqi = {
@@ -672,6 +710,14 @@ const lizirongqi = {
         leixing: leixing.zhizaotai,
         caiji: false,
         shoucuo: true,
+        zhushi: "普通"
+    }, {
+        yuanliao: [{wupin: danjicishi, shuliang: 6}, {wupin: tongkuai, shuliang: 2}],
+        shijian: 4,
+        leixing: leixing.zhizaotai,
+        caiji: false,
+        shoucuo: false,
+        zhushi: "高效"
     }]
 }
 const kuangjiacailiao = {
@@ -733,16 +779,7 @@ const xingjiwuliuyunshuchuan = {
         shoucuo: true,
     }]
 }
-const guangshanshi = {
-    name: "光栅石",
-    info: [{
-        yuanliao: [],
-        shijian: 0,
-        leixing: leixing.caijiqi,
-        caiji: true,
-        shoucuo: false,
-    }]
-}
+
 const guangzihebingqi = {
     name: "光子合并器",
     info: [{
