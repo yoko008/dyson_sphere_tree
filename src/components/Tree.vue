@@ -15,12 +15,12 @@
             </el-tag>
         </div>
         <div v-if="switchvalue.shebei">
-            <el-tag type="success" size="mini">{{tree.info[dangqian].leixing}}
+            <el-tag type="success" size="mini" effect="plain">{{tree.info[dangqian].leixing}}
             </el-tag>
         </div>
         <div v-if="tree.info.length>1" style="white-space: nowrap;">
             <el-link type="primary" @click="qiehuanhechengfangshi(-1)"><i class="el-icon-caret-left"></i></el-link>
-            <span style="font-size: 10px;color: #82848a;">{{tree.info[dangqian].zhushi}}</span>
+            <el-tag type="info" size="mini" effect="plain">{{tree.info[dangqian].zhushi}}</el-tag>
             <el-link type="primary" @click="qiehuanhechengfangshi(1)"><i class="el-icon-caret-right"></i></el-link>
         </div>
         <div v-if="tree.info[dangqian].yuanliao.length>1">丨</div>

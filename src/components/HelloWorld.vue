@@ -1,18 +1,13 @@
 <template>
     <div class="hello">
-        <div class="row" style="text-align: left;">
-            <el-link href="https://github.com/yoko008/dyson_sphere_tree" target="_blank">源码地址</el-link>
-            <el-link disabled target="_blank">丨</el-link>
-            <el-link href="https://github.com/yoko008/dyson_sphere_tree/issues/new" target="_blank">数据报错/建议</el-link>
-        </div>
-        <el-tabs tab-position="right" style="height: 200px;">
+        <el-tabs tab-position="top" style="height: 100%;">
             <el-tab-pane label="组件">
                 <div class="row">
                     <template v-for="(item,index) in list">
                         <el-button style="margin-left: 1px;" size="mini" type="info" :key="index" plain>
                             {{item.shouzimu}}
                         </el-button>
-                        <el-button style="margin-left: 1px;" v-for="(item2,index2) in item.wupin" :key="index2"
+                        <el-button style="margin-left: 1px;" v-for="(item2,index2) in item.wupin" :key="item2.name"
                                    size="mini"
                                    @click="getData(index,index2)">{{item2}}
                         </el-button>
@@ -25,58 +20,77 @@
                         <el-button style="margin-left: 1px;" size="mini" type="info" :key="index" plain>
                             {{item.shouzimu}}
                         </el-button>
-                        <el-button style="margin-left: 1px;" v-for="(item2,index2) in item.wupin" :key="index2"
+                        <el-button style="margin-left: 1px;" v-for="(item2,index2) in item.wupin" :key="item2.name"
                                    size="mini"
                                    @click="getjianzhuData(index,index2)">{{item2}}
                         </el-button>
                     </template>
                 </div>
             </el-tab-pane>
-        </el-tabs>
-
-        <div class="row" style="text-align: left;">
-            <el-switch
-                    v-model="switchvalue.shuliang"
-                    active-color="#13ce66"
-                    inactive-color="#82848a">
-            </el-switch>
-            显示数量丨
-            <el-switch
-                    v-model="switchvalue.shebei"
-                    active-color="#13ce66"
-                    inactive-color="#82848a">
-            </el-switch>
-            显示设备丨
-            <el-switch
-                    v-model="switchvalue.duoyu"
-                    active-color="#13ce66"
-                    inactive-color="#82848a">
-            </el-switch>
-            显示额外产物<span v-if="switchvalue.shuliang">丨
-            产物数量：</span>
-            <el-input-number v-if="switchvalue.shuliang" size="mini" v-model="zongshuliang" :min="1" :max="10000"
-                             label="产物数量"></el-input-number>
-        </div>
-        <div class="row" style="text-align: left;">
-            图例：
-            <el-tag size="mini">合成产物<span v-if="switchvalue.shuliang">*数量</span></el-tag>
-            丨
-            <el-tag type="danger" size="mini">采集物品<span
-                    v-if="switchvalue.shuliang">*数量</span>
-            </el-tag>
-            <span>丨</span>
-            <el-tag v-if="switchvalue.duoyu" type="info" size="mini"><span>
+            <el-tab-pane label="图例">
+                <div class="row-center">
+                    <el-tag size="mini">组件<span v-if="switchvalue.shuliang">*数量</span></el-tag>
+                    丨
+                    <el-tag size="mini" type="warning">建筑<span v-if="switchvalue.shuliang">*数量</span></el-tag>
+                    丨
+                    <el-tag type="danger" size="mini">采集物品<span
+                            v-if="switchvalue.shuliang">*数量</span>
+                    </el-tag>
+                    <span>丨</span>
+                    <el-tag v-if="switchvalue.duoyu" type="info" size="mini"><span>
                     额外产物<span
-                    v-if="switchvalue.shuliang">*数量</span></span>
-            </el-tag>
-            <span v-if="switchvalue.duoyu">丨</span>
-            <el-tag v-if="switchvalue.shebei" type="success" size="mini">合成设备
-            </el-tag>
-            <span v-if="switchvalue.shebei">丨</span>
-            <el-link type="primary"><i class="el-icon-caret-left"></i></el-link>
-            <span style="font-size: 10px;color: #82848a;">当前合成方式</span>
-            <el-link type="primary"><i class="el-icon-caret-right"></i></el-link>
-        </div>
+                            v-if="switchvalue.shuliang">*数量</span></span>
+                    </el-tag>
+                    <span v-if="switchvalue.duoyu">丨</span>
+                    <el-tag v-if="switchvalue.shebei" type="success" size="mini" effect="plain">合成设备
+                    </el-tag>
+                    <span v-if="switchvalue.shebei">丨</span>
+                    <el-link type="primary"><i class="el-icon-caret-left"></i></el-link>
+                    <el-tag type="info" size="mini" effect="plain">当前合成方式
+                    </el-tag>
+                    <el-link type="primary"><i class="el-icon-caret-right"></i></el-link>
+                </div>
+            </el-tab-pane>
+            <el-tab-pane label="设置">
+                <div class="row-center">
+                    <div v-if="switchvalue.shuliang" style="width: 100%;margin-bottom: 4px;">
+                        产物数量：
+                        <el-input-number v-if="switchvalue.shuliang" size="mini" v-model="zongshuliang" :min="1"
+                                         :max="10000"
+                                         label="产物数量"></el-input-number>
+                    </div>
+                    <div>
+                        <el-switch
+                                v-model="switchvalue.shuliang"
+                                active-color="#13ce66"
+                                inactive-color="#82848a">
+                        </el-switch>
+                        显示数量丨
+                        <el-switch
+                                v-model="switchvalue.shebei"
+                                active-color="#13ce66"
+                                inactive-color="#82848a">
+                        </el-switch>
+                        显示设备丨
+                        <el-switch
+                                v-model="switchvalue.duoyu"
+                                active-color="#13ce66"
+                                inactive-color="#82848a">
+                        </el-switch>
+                        显示额外产物
+                    </div>
+                </div>
+            </el-tab-pane>
+            <el-tab-pane label="反馈">
+                <div class="row-center">
+                    <el-link href="https://github.com/yoko008/dyson_sphere_tree" target="_blank">源码地址</el-link>
+                    <el-link disabled target="_blank">丨</el-link>
+                    <el-link href="https://github.com/yoko008/dyson_sphere_tree/issues/new" target="_blank">数据报错/建议
+                    </el-link>
+                    <span style="color: #c0c4cc;font-size: 6px;">（需github账号）</span>
+                </div>
+            </el-tab-pane>
+        </el-tabs>
         <div style="display:inline-block;*display:inline;*zoom:1;" class="row">
             <Tree :tree="tree" :shuliang="1" :zongshuliang="zongshuliang" :dangqian="dangqian"
                   :switchvalue="switchvalue"/>
@@ -241,8 +255,15 @@
         flex-wrap: wrap;
     }
 
-    .hang {
-
+    .row-center {
+        display: -webkit-flex; /* Safari */
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        flex-wrap: wrap;
+        align-items: center;
+        align-content: center;
+        height: 60px;
     }
 
     .row {
