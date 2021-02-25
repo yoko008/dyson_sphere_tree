@@ -204,13 +204,7 @@
                     [jianzhu.yuanyoucuiquzhan, jianzhu.yuanyoujinglianchang],
                     [jianzhu.zhizaotaimk1, jianzhu.zhizaotaimk2, jianzhu.zhizaotaimk3]
                 ],
-                tree: {
-                    info: [
-                        {
-                            yuanliao: []
-                        }
-                    ]
-                },
+                tree: zujian.boli,
                 dangqian: 0,
                 switchvalue: {
                     shuliang: true,
@@ -221,7 +215,6 @@
             }
         },
         mounted: function () {
-            this.tree = this.listDetail[1][0]
         }
         ,
         methods: {

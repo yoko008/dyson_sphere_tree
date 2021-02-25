@@ -1,8 +1,10 @@
 <template>
     <div>
         <div>
-            <!--<el-badge :value="1" class="item" type="primary">-->
             <el-tag v-if="tree.info[dangqian].caiji==true" type="danger" size="mini">{{tree.name}}<span
+                    v-if="switchvalue.shuliang">*{{zongshuliang}}</span>
+            </el-tag>
+            <el-tag v-else-if="tree.jianzhu==true" type="warning" size="mini">{{tree.name}}<span
                     v-if="switchvalue.shuliang">*{{zongshuliang}}</span>
             </el-tag>
             <el-tag v-else size="mini">{{tree.name}}<span v-if="switchvalue.shuliang">*{{zongshuliang}}</span></el-tag>
@@ -11,19 +13,11 @@
                     :key="item.wupin">{{item.wupin}}<span
                     v-if="switchvalue.shuliang">*{{item.shuliang*zongshuliang}}</span></span>
             </el-tag>
-            <!--</el-badge>-->
-            <!--<span v-if="tree.info[dangqian].duoyu!=undefined">{{tree.info[dangqian].duoyu[0].wupin}}*{{tree.info[dangqian].duoyu[0].shuliang}}</span>-->
         </div>
         <div v-if="switchvalue.shebei">
             <el-tag type="success" size="mini">{{tree.info[dangqian].leixing}}
             </el-tag>
         </div>
-        <!--<div v-if="tree.info.length>1">
-            <span v-for="(item,index) in tree.info" :key="index">
-                <el-link type="primary" v-if="dangqian!=index" @click="qiehuanhechengfangshi(item,index)">{{item.zhushi}}</el-link>
-                <el-link disabled v-else>{{item.zhushi}}</el-link>
-            </span>
-        </div>-->
         <div v-if="tree.info.length>1" style="white-space: nowrap;">
             <el-link type="primary" @click="qiehuanhechengfangshi(-1)"><i class="el-icon-caret-left"></i></el-link>
             <span style="font-size: 10px;color: #82848a;">{{tree.info[dangqian].zhushi}}</span>
