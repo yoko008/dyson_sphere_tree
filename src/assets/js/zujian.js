@@ -129,7 +129,7 @@ const cixianquan = {
     name: "磁线圈",
     a: 0,
     info: [{
-        yuanliao: [{wupin: citie, shuliang: 1}, {wupin: tongkuai, shuliang: 1}],
+        yuanliao: [{wupin: citie, shuliang: 1}, {wupin: tongkuai, shuliang: 0.5}],
         shijian: 1,
         leixing: leixing.zhizaotai,
         caiji: false,
