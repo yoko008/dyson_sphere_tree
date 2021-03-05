@@ -16,6 +16,7 @@
         </div>
         <div v-if="switchvalue.shebei">
             <el-tag type="success" size="mini" effect="plain">{{tree.info[dangqian].leixing}}
+                <span v-if="!tree.info[dangqian].caiji">*{{zongshuliang/(60/tree.info[dangqian].shijian*tree.info[dangqian].shuliang)}}</span>
             </el-tag>
         </div>
         <div v-if="tree.info.length>1" style="white-space: nowrap;">
@@ -41,8 +42,11 @@
                     <div style="border-top:1px black solid;width: 100%;"></div>
                 </div>
                 <div>丨</div>
-                <Tree :tree="item.wupin" :shuliang="item.shuliang" :zongshuliang="item.shuliang * zongshuliang"
-                      :dangqian="0" :switchvalue="switchvalue"/>
+                <Tree :tree="item.wupin"
+                      :shuliang="item.shuliang/tree.info[dangqian].shuliang"
+                      :zongshuliang="item.shuliang * zongshuliang/tree.info[dangqian].shuliang"
+                      :dangqian="0"
+                      :switchvalue="switchvalue"/>
             </div>
         </div>
     </div>
