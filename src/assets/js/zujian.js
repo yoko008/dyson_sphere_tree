@@ -9,15 +9,18 @@ const leixing = {
     huagongshebei: "化工设备",
     fenliushebei: "分馏设备",
     liziduizhuangji: "粒子对撞机",
+    guidaocaijiqi: "轨道采集器",
     shexianjieshouzhan: "射线接收站",
+    shoucai: "手采",
     weiding: "-"
 }
 
 const tiekuang = {
     name: "铁矿",
     info: [{
+        shuliang:45,
         yuanliao: [],
-        shijian: 0,
+        shijian: 60,
         leixing: leixing.caijiqi,
         caiji: true,
         shoucuo: false
@@ -26,8 +29,9 @@ const tiekuang = {
 const tongkuang = {
     name: "铜矿",
     info: [{
+        shuliang:45,
         yuanliao: [],
-        shijian: 0,
+        shijian: 60,
         leixing: leixing.caijiqi,
         caiji: true,
         shoucuo: false
@@ -36,8 +40,9 @@ const tongkuang = {
 const shikuang = {
     name: "石矿",
     info: [{
+        shuliang:45,
         yuanliao: [],
-        shijian: 0,
+        shijian: 60,
         leixing: leixing.caijiqi,
         caiji: true,
         shoucuo: false
@@ -46,8 +51,9 @@ const shikuang = {
 const guishi = {
     name: "硅石",
     info: [{
+        shuliang:45,
         yuanliao: [],
-        shijian: 0,
+        shijian: 60,
         leixing: leixing.caijiqi,
         caiji: true,
         shoucuo: false,
@@ -65,8 +71,9 @@ const guishi = {
 const guangshanshi = {
     name: "光栅石",
     info: [{
+        shuliang:45,
         yuanliao: [],
-        shijian: 0,
+        shijian: 60,
         leixing: leixing.caijiqi,
         caiji: true,
         shoucuo: false,
@@ -145,7 +152,7 @@ const cixianquan = {
 const diancijuzhen = {
     name: "电磁矩阵",
     info: [{
-        shuliang:1,
+        shuliang: 1,
         yuanliao: [{wupin: cixianquan, shuliang: 1}, {wupin: dianluban, shuliang: 1}],
         shijian: 3,
         leixing: leixing.keyanshebei,
@@ -156,8 +163,9 @@ const diancijuzhen = {
 const taishi = {
     name: "钛石",
     info: [{
+        shuliang:45,
         yuanliao: [],
-        shijian: 0,
+        shijian: 60,
         leixing: leixing.caijiqi,
         caiji: true,
         shoucuo: false
@@ -166,7 +174,7 @@ const taishi = {
 const taikuai = {
     name: "钛块",
     info: [{
-        shuliang:1,
+        shuliang: 1,
         yuanliao: [{wupin: taishi, shuliang: 2}],
         shijian: 2,
         leixing: leixing.yelianshebei,
@@ -178,7 +186,7 @@ const taikuai = {
 const shicai = {
     name: "石材",
     info: [{
-        shuliang:1,
+        shuliang: 1,
         yuanliao: [{wupin: shikuang, shuliang: 1}],
         shijian: 1,
         leixing: leixing.yelianshebei,
@@ -189,8 +197,9 @@ const shicai = {
 const meikuang = {
     name: "煤矿",
     info: [{
+        shuliang:45,
         yuanliao: [],
-        shijian: 0,
+        shijian: 60,
         leixing: leixing.caijiqi,
         caiji: true,
         shoucuo: false,
@@ -201,6 +210,7 @@ const yuanyou = {
     info: [{
         yuanliao: [],
         shijian: 0,
+        beilv:1.5,
         leixing: leixing.chouyouzhan,
         caiji: true,
         shoucuo: false,
@@ -209,7 +219,7 @@ const yuanyou = {
 const jinglianyou = {
     name: "精炼油",
     info: [{
-        shuliang:2,
+        shuliang: 2,
         yuanliao: [{wupin: yuanyou, shuliang: 2}],
         shijian: 4,
         leixing: leixing.jinglianshebei,
@@ -221,8 +231,9 @@ const jinglianyou = {
 const keranbing = {
     name: "可燃冰",
     info: [{
+        shuliang:45,
         yuanliao: [],
-        shijian: 0,
+        shijian: 60,
         leixing: leixing.caijiqi,
         caiji: true,
         shoucuo: false
@@ -241,6 +252,15 @@ const linjieguangzi = {
 const qing = {
     name: "氢",
     info: [{
+        shuliang:45,
+        yuanliao: [],
+        shijian: 60,
+        leixing: leixing.guidaocaijiqi,
+        caiji: true,
+        shoucuo: false,
+        zhushi: "采集"
+    },{
+        shuliang: 1,
         yuanliao: [{wupin: yuanyou, shuliang: 2}],
         shijian: 4,
         leixing: leixing.jinglianshebei,
@@ -249,6 +269,7 @@ const qing = {
         duoyu: [{wupin: "精炼油", shuliang: 2}],
         zhushi: "等离子精炼"
     }, {
+        shuliang: 1,
         yuanliao: [{wupin: keranbing, shuliang: 2}],
         shijian: 2,
         leixing: leixing.jinglianshebei,
@@ -257,37 +278,40 @@ const qing = {
         duoyu: [{wupin: "石墨烯", shuliang: 2}],
         zhushi: "分解可燃冰"
     }, {
-        yuanliao: [{wupin: jinglianyou, shuliang: 1 / 3}, {
+        shuliang: 3,
+        yuanliao: [{wupin: jinglianyou, shuliang: 1}, {
             wupin: {
                 name: "氢",
                 info: [{
                     yuanliao: [],
                     shijian: 0,
                     leixing: leixing.weiding,
-                    caiji: false,
+                    caiji: true,
                     shoucuo: false
                 }]
-            }, shuliang: 2 / 3
+            }, shuliang: 2
         }],
         shijian: 4,
         leixing: leixing.jinglianshebei,
         caiji: false,
         shoucuo: false,
-        duoyu: [{wupin: "高能石墨", shuliang: 1 / 3}],
+        duoyu: [{wupin: "高能石墨", shuliang: 1}],
         zhushi: "X射线裂解"
     }, {
-        yuanliao: [{wupin: linjieguangzi, shuliang: 1}],
+        shuliang: 2,
+        yuanliao: [{wupin: linjieguangzi, shuliang: 2}],
         shijian: 2,
         leixing: leixing.liziduizhuangji,
         caiji: false,
         shoucuo: false,
-        duoyu: [{wupin: "反物质", shuliang: 1}],
+        duoyu: [{wupin: "反物质", shuliang: 2}],
         zhushi: "质能储存"
     }]
 }
 const gaonengshimo = {
     name: "高能石墨",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: meikuang, shuliang: 2}],
         shijian: 2,
         leixing: leixing.yelianshebei,
@@ -295,11 +319,12 @@ const gaonengshimo = {
         shoucuo: true,
         zhushi: "普通"
     }, {
+        shuliang: 1,
         yuanliao: [{wupin: jinglianyou, shuliang: 1}, {wupin: qing, shuliang: 2}],
         shijian: 4,
         leixing: leixing.jinglianshebei,
         caiji: false,
-        shoucuo: true,
+        shoucuo: false,
         duoyu: [{wupin: "氢", shuliang: 3}],
         zhushi: "X射线裂解"
     }]
@@ -307,6 +332,7 @@ const gaonengshimo = {
 const suliao = {
     name: "塑料",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: jinglianyou, shuliang: 2}, {wupin: gaonengshimo, shuliang: 1}],
         shijian: 3,
         leixing: leixing.huagongshebei,
@@ -317,8 +343,9 @@ const suliao = {
 const shui = {
     name: "水",
     info: [{
+        shuliang: 75,
         yuanliao: [],
-        shijian: 0,
+        shijian: 60,
         leixing: leixing.choushuizhan,
         caiji: true,
         shoucuo: false
@@ -341,27 +368,30 @@ const liusuan = {
 const shimoxi = {
     name: "石墨烯",
     info: [{
-        yuanliao: [{wupin: gaonengshimo, shuliang: 3 / 2}, {wupin: liusuan, shuliang: 1 / 2}],
-        shijian: 3 / 2,
+        shuliang: 2,
+        yuanliao: [{wupin: gaonengshimo, shuliang: 3}, {wupin: liusuan, shuliang: 1}],
+        shijian: 3,
         leixing: leixing.huagongshebei,
         caiji: false,
         shoucuo: false,
         zhushi: "普通"
     }, {
-        yuanliao: [{wupin: keranbing, shuliang: 2 / 1}],
-        shijian: 2 / 2,
+        shuliang: 2,
+        yuanliao: [{wupin: keranbing, shuliang: 2}],
+        shijian: 2,
         leixing: leixing.huagongshebei,
         caiji: false,
         shoucuo: false,
-        duoyu: [{wupin: "氢", shuliang: 1 / 2}],
+        duoyu: [{wupin: "氢", shuliang: 1}],
         zhushi: "高效"
     }]
 }
 const fenxingguishi = {
     name: "分形硅石",
     info: [{
+        shuliang:45,
         yuanliao: [],
-        shijian: 0,
+        shijian: 60,
         leixing: leixing.caijiqi,
         caiji: true,
         shoucuo: false
@@ -370,6 +400,7 @@ const fenxingguishi = {
 const jinggegui = {
     name: "晶格硅",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: gaochunguikuai, shuliang: 1}],
         shijian: 2,
         leixing: leixing.yelianshebei,
@@ -377,6 +408,7 @@ const jinggegui = {
         shoucuo: false,
         zhushi: "普通"
     }, {
+        shuliang: 1,
         yuanliao: [{wupin: fenxingguishi, shuliang: 1}],
         shijian: 4,
         leixing: leixing.zhizaotai,
@@ -388,6 +420,7 @@ const jinggegui = {
 const gangcai = {
     name: "钢材",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: tiekuai, shuliang: 3}],
         shijian: 3,
         leixing: leixing.yelianshebei,
@@ -398,11 +431,12 @@ const gangcai = {
 const taihejin = {
     name: "钛合金",
     info: [{
-        yuanliao: [{wupin: taikuai, shuliang: 1}, {wupin: gangcai, shuliang: 1}, {
+        shuliang: 4,
+        yuanliao: [{wupin: taikuai, shuliang: 4}, {wupin: gangcai, shuliang: 4}, {
             wupin: liusuan,
-            shuliang: 2
+            shuliang: 8
         }],
-        shijian: 3,
+        shijian: 12,
         leixing: leixing.yelianshebei,
         caiji: false,
         shoucuo: false,
@@ -411,6 +445,7 @@ const taihejin = {
 const boli = {
     name: "玻璃",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: shikuang, shuliang: 2}],
         shijian: 2,
         leixing: leixing.yelianshebei,
@@ -421,8 +456,9 @@ const boli = {
 const jinbolikuangshi = {
     name: "金伯利矿石",
     info: [{
+        shuliang:45,
         yuanliao: [],
-        shijian: 0,
+        shijian: 60,
         leixing: leixing.caijiqi,
         caiji: true,
         shoucuo: false
@@ -431,6 +467,7 @@ const jinbolikuangshi = {
 const jingangshi = {
     name: "金刚石",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: gaonengshimo, shuliang: 1}],
         shijian: 2,
         leixing: leixing.yelianshebei,
@@ -438,6 +475,7 @@ const jingangshi = {
         shoucuo: false,
         zhushi: "普通"
     }, {
+        shuliang: 1,
         yuanliao: [{wupin: jinbolikuangshi, shuliang: 1}],
         shijian: 2,
         leixing: leixing.yelianshebei,
@@ -451,7 +489,7 @@ const mucai = {
     info: [{
         yuanliao: [],
         shijian: 0,
-        leixing: leixing.caijiqi,
+        leixing: leixing.shoucai,
         caiji: true,
         shoucuo: false
     }]
@@ -461,7 +499,7 @@ const zhiwuranliao = {
     info: [{
         yuanliao: [],
         shijian: 0,
-        leixing: leixing.caijiqi,
+        leixing: leixing.shoucai,
         caiji: true,
         shoucuo: false
     }]
@@ -469,13 +507,15 @@ const zhiwuranliao = {
 const youjijingti = {
     name: "有机晶体",
     info: [{
+        shuliang:45,
         yuanliao: [],
-        shijian: 0,
+        shijian: 60,
         leixing: leixing.caijiqi,
         caiji: true,
         shoucuo: false,
         zhushi: "采集"
     }, {
+        shuliang: 1,
         yuanliao: [{wupin: suliao, shuliang: 2}, {wupin: jinglianyou, shuliang: 1}, {
             wupin: shui,
             shuliang: 1
@@ -486,6 +526,7 @@ const youjijingti = {
         shoucuo: false,
         zhushi: "普通"
     }, {
+        shuliang: 1,
         yuanliao: [{wupin: mucai, shuliang: 20}, {wupin: zhiwuranliao, shuliang: 30}, {
             wupin: shui,
             shuliang: 10
@@ -500,6 +541,7 @@ const youjijingti = {
 const yeqingranliaobang = {
     name: "液氢燃料棒",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: taikuai, shuliang: 1}, {wupin: qing, shuliang: 5}],
         shijian: 3,
         leixing: leixing.zhizaotai,
@@ -510,6 +552,7 @@ const yeqingranliaobang = {
 const chilun = {
     name: "齿轮",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: tiekuai, shuliang: 1}],
         shijian: 1,
         leixing: leixing.zhizaotai,
@@ -520,6 +563,7 @@ const chilun = {
 const diandongji = {
     name: "电动机",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: tiekuai, shuliang: 2}, {wupin: chilun, shuliang: 1}, {
             wupin: cixianquan,
             shuliang: 1
@@ -533,9 +577,10 @@ const diandongji = {
 const taihuaboli = {
     name: "钛化玻璃",
     info: [{
-        yuanliao: [{wupin: boli, shuliang: 1}, {wupin: taikuai, shuliang: 1}, {
+        shuliang: 2,
+        yuanliao: [{wupin: boli, shuliang: 2}, {wupin: taikuai, shuliang: 2}, {
             wupin: shui,
-            shuliang: 1
+            shuliang: 2
         }],
         shijian: 5,
         leixing: leixing.zhizaotai,
@@ -546,8 +591,9 @@ const taihuaboli = {
 const lengjing = {
     name: "棱镜",
     info: [{
-        yuanliao: [{wupin: boli, shuliang: 1.5}],
-        shijian: 1,
+        shuliang: 2,
+        yuanliao: [{wupin: boli, shuliang: 3}],
+        shijian: 2,
         leixing: leixing.zhizaotai,
         caiji: false,
         shoucuo: true,
@@ -556,6 +602,7 @@ const lengjing = {
 const taijingshi = {
     name: "钛晶石",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: youjijingti, shuliang: 1}, {wupin: taikuai, shuliang: 3}],
         shijian: 4,
         leixing: leixing.zhizaotai,
@@ -566,6 +613,7 @@ const taijingshi = {
 const tuijinqi = {
     name: "推进器",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: gangcai, shuliang: 2}, {wupin: tongkuai, shuliang: 3}],
         shijian: 4,
         leixing: leixing.zhizaotai,
@@ -576,6 +624,7 @@ const tuijinqi = {
 const dianciwolun = {
     name: "电磁涡轮",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: diandongji, shuliang: 2}, {wupin: cixianquan, shuliang: 2}],
         shijian: 2,
         leixing: leixing.zhizaotai,
@@ -586,6 +635,7 @@ const dianciwolun = {
 const jialituijinqi = {
     name: "加力推进器",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: taihejin, shuliang: 5}, {wupin: dianciwolun, shuliang: 5}],
         shijian: 6,
         leixing: leixing.zhizaotai,
@@ -596,15 +646,17 @@ const jialituijinqi = {
 const zhongqing = {
     name: "重氢",
     info: [{
-        yuanliao: [{wupin: qing, shuliang: 2}],
-        shijian: 1,
+        shuliang: 5,
+        yuanliao: [{wupin: qing, shuliang: 10}],
+        shijian: 5,
         leixing: leixing.liziduizhuangji,
         caiji: false,
         shoucuo: false,
         zhushi: "普通"
     }, {
+        shuliang: 1,
         yuanliao: [{wupin: qing, shuliang: 100}],
-        shijian: 1,
+        shijian: 0,
         leixing: leixing.fenliushebei,
         caiji: false,
         shoucuo: false,
@@ -615,6 +667,7 @@ const zhongqing = {
 const dianjiangfasheqi = {
     name: "电浆激发器",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: cixianquan, shuliang: 4}, {wupin: lengjing, shuliang: 2}],
         shijian: 2,
         leixing: leixing.zhizaotai,
@@ -625,6 +678,7 @@ const dianjiangfasheqi = {
 const chaojicichanghuan = {
     name: "超级磁场环",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: dianciwolun, shuliang: 2}, {wupin: citie, shuliang: 3}, {
             wupin: gaonengshimo,
             shuliang: 1
@@ -648,15 +702,17 @@ const cisunjiejing = {
 const tannamiguan = {
     name: "碳纳米管",
     info: [{
-        yuanliao: [{wupin: shimoxi, shuliang: 1.5}, {wupin: taikuai, shuliang: 0.5}],
-        shijian: 2,
+        shuliang: 2,
+        yuanliao: [{wupin: shimoxi, shuliang: 3}, {wupin: taikuai, shuliang: 1}],
+        shijian: 4,
         leixing: leixing.huagongshebei,
         caiji: false,
         shoucuo: false,
         zhushi: "普通"
     }, {
-        yuanliao: [{wupin: cisunjiejing, shuliang: 1}],
-        shijian: 2,
+        shuliang: 2,
+        yuanliao: [{wupin: cisunjiejing, shuliang: 2}],
+        shijian: 4,
         leixing: leixing.huagongshebei,
         caiji: false,
         shoucuo: false,
@@ -666,6 +722,7 @@ const tannamiguan = {
 const lizikuandai = {
     name: "粒子宽带",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: tannamiguan, shuliang: 2}, {wupin: jinggegui, shuliang: 2}, {
             wupin: suliao,
             shuliang: 1
@@ -679,6 +736,7 @@ const lizikuandai = {
 const kaximierjingti = {
     name: "卡西米尔晶体",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: taijingshi, shuliang: 1}, {wupin: shimoxi, shuliang: 2}, {
             wupin: qing,
             shuliang: 12
@@ -689,6 +747,7 @@ const kaximierjingti = {
         shoucuo: true,
         zhushi: "普通"
     }, {
+        shuliang: 1,
         yuanliao: [{wupin: guangshanshi, shuliang: 6}, {wupin: shimoxi, shuliang: 2}, {
             wupin: qing,
             shuliang: 12
@@ -703,8 +762,9 @@ const kaximierjingti = {
 const danjicishi = {
     name: "单极磁石",
     info: [{
+        shuliang:45,
         yuanliao: [],
-        shijian: 0,
+        shijian: 60,
         leixing: leixing.caijiqi,
         caiji: true,
         shoucuo: false
@@ -713,6 +773,7 @@ const danjicishi = {
 const lizirongqi = {
     name: "粒子容器",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: dianciwolun, shuliang: 2}, {wupin: tongkuai, shuliang: 2}, {
             wupin: shimoxi,
             shuliang: 2
@@ -723,7 +784,8 @@ const lizirongqi = {
         shoucuo: true,
         zhushi: "普通"
     }, {
-        yuanliao: [{wupin: danjicishi, shuliang: 6}, {wupin: tongkuai, shuliang: 2}],
+        shuliang: 1,
+        yuanliao: [{wupin: danjicishi, shuliang: 10}, {wupin: tongkuai, shuliang: 2}],
         shijian: 4,
         leixing: leixing.zhizaotai,
         caiji: false,
@@ -734,6 +796,7 @@ const lizirongqi = {
 const kuangjiacailiao = {
     name: "框架材料",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: tannamiguan, shuliang: 4}, {
             wupin: taihejin,
             shuliang: 1
@@ -747,6 +810,7 @@ const kuangjiacailiao = {
 const weijingyuanjian = {
     name: "微晶元件",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: gaochunguikuai, shuliang: 2}, {wupin: tongkuai, shuliang: 1}],
         shijian: 2,
         leixing: leixing.zhizaotai,
@@ -757,6 +821,7 @@ const weijingyuanjian = {
 const chuliqi = {
     name: "处理器",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: dianluban, shuliang: 2}, {wupin: weijingyuanjian, shuliang: 2}],
         shijian: 3,
         leixing: leixing.zhizaotai,
@@ -767,6 +832,7 @@ const chuliqi = {
 const wuliuyunshuji = {
     name: "物流运输机",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: tiekuai, shuliang: 5}, {wupin: chuliqi, shuliang: 2}, {
             wupin: tuijinqi,
             shuliang: 2
@@ -780,6 +846,7 @@ const wuliuyunshuji = {
 const xingjiwuliuyunshuchuan = {
     name: "星际物流运输船",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: taihejin, shuliang: 10}, {wupin: chuliqi, shuliang: 10}, {
             wupin: jialituijinqi,
             shuliang: 2
@@ -794,6 +861,7 @@ const xingjiwuliuyunshuchuan = {
 const guangzihebingqi = {
     name: "光子合并器",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: lengjing, shuliang: 2}, {wupin: dianluban, shuliang: 1}],
         shijian: 3,
         leixing: leixing.zhizaotai,
@@ -801,6 +869,7 @@ const guangzihebingqi = {
         shoucuo: true,
         zhushi: "普通"
     }, {
+        shuliang: 1,
         yuanliao: [{wupin: guangshanshi, shuliang: 1}, {wupin: dianluban, shuliang: 1}],
         shijian: 3,
         leixing: leixing.zhizaotai,
@@ -812,6 +881,7 @@ const guangzihebingqi = {
 const weimianguolvqi = {
     name: "位面过滤器",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: kaximierjingti, shuliang: 1}, {wupin: taihuaboli, shuliang: 2}],
         shijian: 12,
         leixing: leixing.zhizaotai,
@@ -822,6 +892,7 @@ const weimianguolvqi = {
 const daoheranliaobang = {
     name: "氚核燃料棒",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: taihejin, shuliang: 1}, {wupin: zhongqing, shuliang: 10}, {
             wupin: chaojicichanghuan,
             shuliang: 1
@@ -835,6 +906,7 @@ const daoheranliaobang = {
 const qiyiwuzhi = {
     name: "奇异物质",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: lizirongqi, shuliang: 2}, {wupin: tiekuai, shuliang: 2}, {
             wupin: zhongqing,
             shuliang: 10
@@ -848,6 +920,7 @@ const qiyiwuzhi = {
 const yinlitoujing = {
     name: "引力透镜",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: jingangshi, shuliang: 4}, {wupin: qiyiwuzhi, shuliang: 1}],
         shijian: 6,
         leixing: leixing.zhizaotai,
@@ -858,8 +931,9 @@ const yinlitoujing = {
 const taiyangfan = {
     name: "太阳帆",
     info: [{
-        yuanliao: [{wupin: shimoxi, shuliang: 0.5}, {wupin: guangzihebingqi, shuliang: 0.5}],
-        shijian: 2,
+        shuliang: 2,
+        yuanliao: [{wupin: shimoxi, shuliang: 1}, {wupin: guangzihebingqi, shuliang: 1}],
+        shijian: 4,
         leixing: leixing.zhizaotai,
         caiji: false,
         shoucuo: true,
@@ -868,6 +942,7 @@ const taiyangfan = {
 const yanmieyueshuqiu = {
     name: "湮灭约束球",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: lizirongqi, shuliang: 1}, {wupin: chuliqi, shuliang: 1}],
         shijian: 20,
         leixing: leixing.zhizaotai,
@@ -878,6 +953,7 @@ const yanmieyueshuqiu = {
 const liangzixinpian = {
     name: "量子芯片",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: chuliqi, shuliang: 2}, {wupin: weimianguolvqi, shuliang: 2}],
         shijian: 6,
         leixing: leixing.zhizaotai,
@@ -888,17 +964,19 @@ const liangzixinpian = {
 const fanwuzhi = {
     name: "反物质",
     info: [{
-        yuanliao: [{wupin: linjieguangzi, shuliang: 1}],
-        shijian: 1,
+        shuliang: 2,
+        yuanliao: [{wupin: linjieguangzi, shuliang: 2}],
+        shijian: 2,
         leixing: leixing.liziduizhuangji,
         caiji: false,
         shoucuo: false,
-        duoyu: [{wupin: "氢", shuliang: 1}]
+        duoyu: [{wupin: "氢", shuliang: 2}]
     }]
 }
 const fanwuzhiranliaobang = {
     name: "反物质燃料棒",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: fanwuzhi, shuliang: 10}, {wupin: qing, shuliang: 10}, {
             wupin: yanmieyueshuqiu,
             shuliang: 1
@@ -912,6 +990,7 @@ const fanwuzhiranliaobang = {
 const daisenqiuzujian = {
     name: "戴森球组件",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: kuangjiacailiao, shuliang: 3}, {wupin: taiyangfan, shuliang: 3}, {
             wupin: chuliqi,
             shuliang: 3
@@ -925,11 +1004,12 @@ const daisenqiuzujian = {
 const xiaoxingyunzaihuojian = {
     name: "小型运载火箭",
     info: [{
-        yuanliao: [{wupin: kuangjiacailiao, shuliang: 3}, {wupin: taiyangfan, shuliang: 3}, {
-            wupin: chuliqi,
-            shuliang: 3
+        shuliang: 1,
+        yuanliao: [{wupin: daisenqiuzujian, shuliang: 2}, {wupin: daoheranliaobang, shuliang: 2}, {
+            wupin: liangzixinpian,
+            shuliang: 2
         }],
-        shijian: 8,
+        shijian: 6,
         leixing: leixing.zhizaotai,
         caiji: false,
         shoucuo: true,
@@ -938,6 +1018,7 @@ const xiaoxingyunzaihuojian = {
 const nengliangjuzhen = {
     name: "能量矩阵",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: gaonengshimo, shuliang: 2}, {wupin: qing, shuliang: 2}],
         shijian: 6,
         leixing: leixing.keyanshebei,
@@ -948,6 +1029,7 @@ const nengliangjuzhen = {
 const jiegoujuzhen = {
     name: "结构矩阵",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: jingangshi, shuliang: 1}, {wupin: taijingshi, shuliang: 1}],
         shijian: 8,
         leixing: leixing.keyanshebei,
@@ -958,6 +1040,7 @@ const jiegoujuzhen = {
 const xinxijuzhen = {
     name: "信息矩阵",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: chuliqi, shuliang: 2}, {wupin: lizikuandai, shuliang: 1}],
         shijian: 10,
         leixing: leixing.keyanshebei,
@@ -968,8 +1051,9 @@ const xinxijuzhen = {
 const yinlijuzhen = {
     name: "引力矩阵",
     info: [{
-        yuanliao: [{wupin: yinlitoujing, shuliang: 0.5}, {wupin: liangzixinpian, shuliang: 0.5}],
-        shijian: 12,
+        shuliang: 2,
+        yuanliao: [{wupin: yinlitoujing, shuliang: 1}, {wupin: liangzixinpian, shuliang: 1}],
+        shijian: 24,
         leixing: leixing.keyanshebei,
         caiji: false,
         shoucuo: true,
@@ -978,6 +1062,7 @@ const yinlijuzhen = {
 const yuzhoujuzhen = {
     name: "宇宙矩阵",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: diancijuzhen, shuliang: 1}, {
             wupin: nengliangjuzhen,
             shuliang: 1
@@ -994,6 +1079,7 @@ const yuzhoujuzhen = {
 const diji = {
     name: "地基",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: shicai, shuliang: 3}, {wupin: gangcai, shuliang: 1}],
         shijian: 1,
         leixing: leixing.zhizaotai,
@@ -1004,6 +1090,7 @@ const diji = {
 const kongjianqiaoquqi = {
     name: "空间翘曲器",
     info: [{
+        shuliang: 1,
         yuanliao: [{wupin: yinlitoujing, shuliang: 1}],
         shijian: 10,
         leixing: leixing.zhizaotai,
@@ -1011,8 +1098,9 @@ const kongjianqiaoquqi = {
         shoucuo: true,
         zhushi: "普通"
     }, {
-        yuanliao: [{wupin: yinlijuzhen, shuliang: 0.125}],
-        shijian: 1.25,
+        shuliang: 8,
+        yuanliao: [{wupin: yinlijuzhen, shuliang: 1}],
+        shijian: 10,
         leixing: leixing.zhizaotai,
         caiji: false,
         shoucuo: true,
@@ -1021,6 +1109,7 @@ const kongjianqiaoquqi = {
 }
 
 export default {
+    leixing,
     boli,
     citie, cixianquan, chilun, chaojicichanghuan, chuliqi,
     dianluban, daoheranliaobang, diandongji, dianciwolun, dianjiangfasheqi, daisenqiuzujian, diji, diancijuzhen,

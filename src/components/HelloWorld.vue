@@ -29,24 +29,29 @@
             </el-tab-pane>
             <el-tab-pane label="图例">
                 <div class="row-center">
-                    <el-tag size="mini">组件<span v-if="switchvalue.shuliang">*数量</span></el-tag>
-                    丨
-                    <el-tag size="mini" type="warning">建筑<span v-if="switchvalue.shuliang">*数量</span></el-tag>
-                    丨
-                    <el-tag type="danger" size="mini">采集物品<span
-                            v-if="switchvalue.shuliang">*数量</span>
+                    <el-tag size="mini">
+                        组件<span v-if="switchvalue.shuliang">*数量</span>
                     </el-tag>
                     <span>丨</span>
-                    <el-tag v-if="switchvalue.duoyu" type="info" size="mini"><span>
-                    额外产物<span
-                            v-if="switchvalue.shuliang">*数量</span></span>
+                    <el-tag size="mini" type="warning">
+                        建筑<span v-if="switchvalue.shuliang">*数量</span>
+                    </el-tag>
+                    <span>丨</span>
+                    <el-tag type="danger" size="mini">
+                        采集物品<span v-if="switchvalue.shuliang">*数量</span>
+                    </el-tag>
+                    <span>丨</span>
+                    <el-tag v-if="switchvalue.duoyu" type="info" size="mini">
+                        额外产物<span v-if="switchvalue.shuliang">*数量</span>
                     </el-tag>
                     <span v-if="switchvalue.duoyu">丨</span>
-                    <el-tag v-if="switchvalue.shebei" type="success" size="mini" effect="plain">合成设备
+                    <el-tag v-if="switchvalue.shebei" type="success" size="mini" effect="plain">
+                        合成设备<span v-if="switchvalue.shuliang">*数量</span>
                     </el-tag>
                     <span v-if="switchvalue.shebei">丨</span>
                     <el-link type="primary"><i class="el-icon-caret-left"></i></el-link>
-                    <el-tag type="info" size="mini" effect="plain">当前合成方式
+                    <el-tag type="info" size="mini" effect="plain">
+                        当前合成方式
                     </el-tag>
                     <el-link type="primary"><i class="el-icon-caret-right"></i></el-link>
                 </div>
@@ -54,10 +59,16 @@
             <el-tab-pane label="设置">
                 <div class="row-center">
                     <div v-if="switchvalue.shuliang" style="width: 100%;margin-bottom: 4px;">
-                        产物数量：
+                        每1分钟产物数量：
                         <el-input-number v-if="switchvalue.shuliang" size="mini" v-model="zongshuliang" :min="1"
                                          :max="10000"
-                                         label="产物数量"></el-input-number>
+                                         label="产物数量"></el-input-number>丨
+                        制造台等级：
+                        <el-radio-group v-model="switchvalue.zhizaotai" size="mini">
+                            <el-radio-button label="0.75">I</el-radio-button>
+                            <el-radio-button label="1">II</el-radio-button>
+                            <el-radio-button label="1.5">III</el-radio-button>
+                        </el-radio-group>
                     </div>
                     <div>
                         <el-switch
@@ -66,6 +77,12 @@
                                 inactive-color="#82848a">
                         </el-switch>
                         显示数量丨
+                        <el-switch
+                                v-model="switchvalue.quzheng"
+                                active-color="#13ce66"
+                                inactive-color="#82848a">
+                        </el-switch>
+                        数量取整丨
                         <el-switch
                                 v-model="switchvalue.shebei"
                                 active-color="#13ce66"
@@ -91,7 +108,7 @@
                 </div>
             </el-tab-pane>
         </el-tabs>
-        <div style="display:inline-block;*display:inline;*zoom:1;" class="row">
+        <div style="display:inline-block;*display:inline;*zoom:1;" class="row tree">
             <Tree :tree="tree" :shuliang="1" :zongshuliang="zongshuliang" :dangqian="dangqian"
                   :switchvalue="switchvalue"/>
         </div>
@@ -223,9 +240,11 @@
                 switchvalue: {
                     shuliang: true,
                     shebei: true,
-                    duoyu: true
+                    duoyu: true,
+                    quzheng: true,
+                    zhizaotai:0.75
                 },
-                zongshuliang: 1
+                zongshuliang: 60
             }
         },
         mounted: function () {
@@ -253,6 +272,7 @@
         flex-direction: row;
         justify-content: flex-start;
         flex-wrap: wrap;
+        margin: 10px 0px;
     }
 
     .row-center {
@@ -266,7 +286,6 @@
         height: 60px;
     }
 
-    .row {
-        margin: 10px 0px;
+    .tree {
     }
 </style>
