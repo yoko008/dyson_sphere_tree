@@ -890,7 +890,7 @@ const weimianguolvqi = {
     }]
 }
 const daoheranliaobang = {
-    name: "氚核燃料棒",
+    name: "氘核燃料棒",
     info: [{
         shuliang: 1,
         yuanliao: [{wupin: taihejin, shuliang: 1}, {wupin: zhongqing, shuliang: 10}, {

@@ -2,7 +2,7 @@
 
 戴森球合成树形图。
 
-####预览：
+#预览：
 
 github：[https://yoko008.github.io/](https://yoko008.github.io/).
 
