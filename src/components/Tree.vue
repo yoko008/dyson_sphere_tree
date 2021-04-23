@@ -66,7 +66,7 @@
                     <span v-if="switchvalue.quzheng">{{Math.round(zongshuliang/60/1.5*100)/100}}</span>
                     <span v-else>{{zongshuliang/60/1.5}}</span>
                     /s)</span>
-                <span v-else-if="tree.info[dangqian].leixing=='轨道采集器'">(没开采过，知道的给我说说)</span>
+                <span v-else-if="tree.info[dangqian].leixing=='轨道采集器'">(效率未知)</span>
                 <span v-else-if="tree.info[dangqian].leixing=='射线接收站'">(还没到这，知道的给我说说)</span>
                 <span v-else-if="tree.info[dangqian].leixing=='手采'">(手动采集没效率，要不还是算了？)</span>
             </el-tag>

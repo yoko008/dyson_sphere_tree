@@ -662,6 +662,14 @@ const zhongqing = {
         shoucuo: false,
         zhushi: "重氢分馏",
         duoyu: [{wupin: "氢", shuliang: 99}]
+    },{
+        shuliang:1,
+        yuanliao: [],
+        shijian: 60,
+        leixing: leixing.guidaocaijiqi,
+        caiji: true,
+        shoucuo: false,
+        zhushi: "采集"
     }]
 }
 const dianjiangfasheqi = {
