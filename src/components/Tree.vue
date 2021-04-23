@@ -23,10 +23,10 @@
                         :key="item.wupin">
                     {{item.wupin}}
                     <!--多余产物数量=单位多余产物数量/单位物品数量*总数量-->
-                    <span v-if="switchvalue.shuliang">*
-                        <span v-if="switchvalue.quzheng">{{Math.ceil(item.shuliang*zongshuliang/tree.info[dangqian].shuliang)}}</span>
-                        <span v-else>{{item.shuliang*zongshuliang/tree.info[dangqian].shuliang}}</span>
-                    </span>
+                    <template v-if="switchvalue.shuliang">*
+                        <template v-if="switchvalue.quzheng">{{Math.ceil(item.shuliang*zongshuliang/tree.info[dangqian].shuliang)}}</template>
+                        <template v-else>{{item.shuliang*zongshuliang/tree.info[dangqian].shuliang}}</template>
+                    </template>
                 </span>
             </el-tag>
         </div>
@@ -37,38 +37,47 @@
                 <!--1分钟产出所需合成设备数量=总数量/一台机器1分钟产出数量=总数量/（60/单位产物时间*单位产物数量）-->
                 <span v-if="!tree.info[dangqian].caiji">
                     <span v-if="tree.info[dangqian].leixing=='制造台'">
-                        <span v-if="switchvalue.zhizaotai==0.75">Mk.I</span>
-                        <span v-if="switchvalue.zhizaotai==1">Mk.II</span>
-                        <span v-if="switchvalue.zhizaotai==1.5">Mk.III</span>
-                        *
-                        <span v-if="switchvalue.quzheng">{{Math.ceil(zongshuliang/(60/tree.info[dangqian].shijian*tree.info[dangqian].shuliang*switchvalue.zhizaotai))}}</span>
-                        <span v-else>{{zongshuliang/(60/tree.info[dangqian].shijian*tree.info[dangqian].shuliang*switchvalue.zhizaotai)}}</span>
+                        <template v-if="switchvalue.zhizaotai==0.75">Mk.I</template>
+                        <template v-if="switchvalue.zhizaotai==1">Mk.II</template>
+                        <template v-if="switchvalue.zhizaotai==1.5">Mk.III</template>
+                        <template v-if="switchvalue.shuliang">*
+                            <template v-if="switchvalue.quzheng">{{Math.ceil(zongshuliang/(60/tree.info[dangqian].shijian*tree.info[dangqian].shuliang*switchvalue.zhizaotai))}}</template>
+                            <template v-else>{{zongshuliang/(60/tree.info[dangqian].shijian*tree.info[dangqian].shuliang*switchvalue.zhizaotai)}}</template>
+                        </template>
                     </span>
                     <span v-else>
-                        *
-                        <span v-if="switchvalue.quzheng">{{Math.ceil(zongshuliang/(60/tree.info[dangqian].shijian*tree.info[dangqian].shuliang))}}</span>
-                        <span v-else>{{zongshuliang/(60/tree.info[dangqian].shijian*tree.info[dangqian].shuliang)}}</span>
+                        <template v-if="switchvalue.shuliang">*
+                            <template v-if="switchvalue.quzheng">{{Math.ceil(zongshuliang/(60/tree.info[dangqian].shijian*tree.info[dangqian].shuliang))}}</template>
+                            <template v-else>{{zongshuliang/(60/tree.info[dangqian].shijian*tree.info[dangqian].shuliang)}}</template>
+                        </template>
                     </span>
                 </span>
                 <span v-else-if="tree.info[dangqian].leixing=='采矿机'">
-                    (矿脉*
-                    <span v-if="switchvalue.quzheng">{{Math.ceil(zongshuliang/(60/tree.info[dangqian].shijian*tree.info[dangqian].shuliang))}}</span>
-                    <span v-else>{{zongshuliang/(60/tree.info[dangqian].shijian*tree.info[dangqian].shuliang)}}</span>
-                    )
+                    <template v-if="switchvalue.shuliang">(矿脉*
+                        <template v-if="switchvalue.quzheng">{{Math.ceil(zongshuliang/(60/tree.info[dangqian].shijian*tree.info[dangqian].shuliang))}}</template>
+                        <template
+                                v-else>{{zongshuliang/(60/tree.info[dangqian].shijian*tree.info[dangqian].shuliang)}}</template>
+                    </template>)
                 </span>
                 <span v-else-if="tree.info[dangqian].leixing=='抽水设备'">
-                    *
-                    <span v-if="switchvalue.quzheng">{{Math.ceil(zongshuliang/(60/tree.info[dangqian].shijian*tree.info[dangqian].shuliang))}}</span>
-                    <span v-else>{{zongshuliang/(60/tree.info[dangqian].shijian*tree.info[dangqian].shuliang)}}</span>
+                    <template v-if="switchvalue.shuliang">*
+                        <template v-if="switchvalue.quzheng">{{Math.ceil(zongshuliang/(60/tree.info[dangqian].shijian*tree.info[dangqian].shuliang))}}</template>
+                        <template
+                                v-else>{{zongshuliang/(60/tree.info[dangqian].shijian*tree.info[dangqian].shuliang)}}</template>
+                    </template>
                 </span>
                 <span v-else-if="tree.info[dangqian].leixing=='抽油设备'">
-                    (原油涌泉产量>
-                    <span v-if="switchvalue.quzheng">{{Math.round(zongshuliang/60/1.5*100)/100}}</span>
-                    <span v-else>{{zongshuliang/60/1.5}}</span>
-                    /s)</span>
-                <span v-else-if="tree.info[dangqian].leixing=='轨道采集器'">(效率未知)</span>
-                <span v-else-if="tree.info[dangqian].leixing=='射线接收站'">(还没到这，知道的给我说说)</span>
-                <span v-else-if="tree.info[dangqian].leixing=='手采'">(手动采集没效率，要不还是算了？)</span>
+                    (原油涌泉
+                    <template v-if="switchvalue.shuliang">产量>
+                        <template v-if="switchvalue.quzheng">{{Math.round(zongshuliang/60/1.5*100)/100}}</template>
+                        <template v-else>{{zongshuliang/60/1.5}}</template>
+                            /s)
+                    </template>
+                </span>
+                <span v-else-if="tree.info[dangqian].leixing=='轨道采集器'"><template
+                        v-if="switchvalue.shuliang">(效率未知)</template></span>
+                <span v-else-if="tree.info[dangqian].leixing=='射线接收站'"><template v-if="switchvalue.shuliang">(还没到这，知道的给我说说)</template></span>
+                <span v-else-if="tree.info[dangqian].leixing=='手采'"><template v-if="switchvalue.shuliang">(手动采集没效率，要不还是算了？)</template></span>
             </el-tag>
         </div>
         <!--提供切换合成方式按钮-->
@@ -122,6 +131,7 @@
             return {}
         },
         mounted: function () {
+            console.log(this.tree)
         },
         methods: {
             qiehuanhechengfangshi: function (index) {
